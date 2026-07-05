@@ -17,16 +17,23 @@ st.set_page_config(
 )
 
 st.title("🏦 SBI Smart Customer Acquisition Agent")
+st.write("Powered by Google ADK + Gemini 2.5 Flash")
 
-# DEBUG (Remove later)
+# Remove this line after testing if you want
 st.write("API Key Loaded:", "GOOGLE_API_KEY" in st.secrets)
+
+# ------------------------
+# Demo Mode Toggle
+# ------------------------
 
 demo_mode = st.toggle(
     "🎭 Demo Mode (No Gemini API)",
     value=True,
 )
 
-st.write("Powered by Google ADK + Gemini 2.5 Flash")
+# ------------------------
+# Customer Inputs
+# ------------------------
 
 age = st.number_input("Age", 18, 100, 29)
 
@@ -44,9 +51,9 @@ occupation = st.selectbox(
 
 income = st.number_input(
     "Monthly Income",
-    0,
-    1000000,
-    90000,
+    min_value=0,
+    max_value=1000000,
+    value=90000,
 )
 
 goal = st.selectbox(
@@ -60,6 +67,9 @@ goal = st.selectbox(
     ],
 )
 
+# ------------------------
+# Google ADK Function
+# ------------------------
 
 async def get_response():
 
@@ -73,11 +83,8 @@ async def get_response():
 Customer Details
 
 Age : {age}
-
 Occupation : {occupation}
-
 Income : {income}
-
 Goal : {goal}
 """
             )
@@ -97,6 +104,7 @@ Goal : {goal}
             for part in event.content.parts:
 
                 if getattr(part, "text", None):
+
                     final_response = part.text
 
     return final_response
@@ -115,9 +123,9 @@ if st.button("🚀 Get Recommendation"):
         "goal": goal,
     }
 
-    # --------------------
-    # DEMO MODE
-    # --------------------
+    # ------------------------
+    # Demo Mode
+    # ------------------------
 
     if demo_mode:
 
@@ -127,9 +135,9 @@ if st.button("🚀 Get Recommendation"):
 
         st.markdown(response)
 
-    # --------------------
-    # REAL AI
-    # --------------------
+    # ------------------------
+    # Real Google ADK
+    # ------------------------
 
     else:
 
@@ -141,16 +149,16 @@ if st.button("🚀 Get Recommendation"):
 
                 response = asyncio.run(get_response())
 
-            st.success("Recommendation Generated")
+            st.success("✅ Recommendation Generated")
 
             st.markdown(response)
 
         except Exception:
 
-    st.warning("Live AI is currently unavailable.")
+            st.warning("⚠️ Live AI is currently unavailable.")
 
-    st.info("Showing Demo Recommendation instead.")
+            st.info("Showing Demo Recommendation instead.")
 
-    response = get_demo_response(customer)
+            response = get_demo_response(customer)
 
-    st.markdown(response)
+            st.markdown(response)
