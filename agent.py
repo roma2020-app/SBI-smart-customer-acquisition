@@ -1,9 +1,14 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
-load_dotenv()
-
-print("Agent loaded key:", os.getenv("GOOGLE_API_KEY"))
+try:
+    import streamlit as st
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    else:
+        load_dotenv()
+except Exception:
+    load_dotenv()
 from google.adk.agents import LlmAgent
 
 from tools.profile_tool import analyze_profile
