@@ -66,6 +66,7 @@ Git & GitHub
 <img width="1857" height="882" alt="image" src="https://github.com/user-attachments/assets/0f86eb31-aa12-45d6-a780-260754a8ce68" />
 
 ⭐ Support
+
 If you found this project useful, consider giving it a ⭐ Star on GitHub to support its development.
 
 Google AI Studio
