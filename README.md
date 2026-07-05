@@ -1,3 +1,9 @@
+Live Demo
+
+Explore the deployed application here: https://smart-customer-with-ai.streamlit.app/
+
+This demo showcases the SBI Smart Customer Acquisition Agent and its key features.
+
 # SBI-smart-customer-acquisition
 SBI Smart Customer Acquisition Agent is an AI-powered customer advisory system that assists SBI relationship managers and digital banking platforms in identifying customer needs and recommending the most suitable banking products.
 
@@ -43,13 +49,24 @@ InMemorySessionService – Manages user sessions.
 Python Tools – Performs deterministic customer profiling and product recommendation.
 Gemini 2.5 Flash – Generates the final personalized response.
 
-##AI WorkFlow
-<img width="902" height="540" alt="image" src="https://github.com/user-attachments/assets/bf83fc61-36cb-4882-b847-22d4a2124f02" />
-
-
 ##Development Tools
 Visual Studio Code
 Python Virtual Environment (venv)
 Git & GitHub
+
+##AI WorkFlow
+<img width="902" height="540" alt="image" src="https://github.com/user-attachments/assets/bf83fc61-36cb-4882-b847-22d4a2124f02" />
+
+#Screenshots
+<img width="1857" height="882" alt="image" src="https://github.com/user-attachments/assets/f3598126-7358-43d9-a12b-7a48d619f1a6" />
+
+<img width="1857" height="882" alt="image" src="https://github.com/user-attachments/assets/44af5d3d-7db5-483a-a46e-fa848e1c6837" />
+
+
+<img width="1857" height="882" alt="image" src="https://github.com/user-attachments/assets/0f86eb31-aa12-45d6-a780-260754a8ce68" />
+
+⭐ Support
+If you found this project useful, consider giving it a ⭐ Star on GitHub to support its development.
+
 Google AI Studio
 Streamlit
