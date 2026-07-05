@@ -44,27 +44,8 @@ Python Tools – Performs deterministic customer profiling and product recommend
 Gemini 2.5 Flash – Generates the final personalized response.
 
 ##AI WorkFlow
-Customer Input
-       │
-       ▼
-Streamlit Web UI
-       │
-       ▼
-Google ADK Runner
-       │
-       ▼
-LlmAgent (Gemini 2.5 Flash)
-       │
-       ├───────────────┐
-       ▼               ▼
-Profile Tool     Recommendation Tool
-(Python)         (Python)
-       │               │
-       └───────┬───────┘
-               ▼
-     Personalized Recommendation
-               ▼
-      AI Sales Pitch & Response
+<img width="902" height="540" alt="image" src="https://github.com/user-attachments/assets/bf83fc61-36cb-4882-b847-22d4a2124f02" />
+
 
 ##Development Tools
 Visual Studio Code
