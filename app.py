@@ -1,13 +1,13 @@
 import asyncio
 import streamlit as st
-from demo import get_demo_response
 from google.genai import types
+
+from demo import get_demo_response
 
 from runner import (
     runner,
     create_session,
     USER_ID,
-    
 )
 
 st.set_page_config(
@@ -18,9 +18,12 @@ st.set_page_config(
 
 st.title("🏦 SBI Smart Customer Acquisition Agent")
 
+# DEBUG (Remove later)
+st.write("API Key Loaded:", "GOOGLE_API_KEY" in st.secrets)
+
 demo_mode = st.toggle(
     "🎭 Demo Mode (No Gemini API)",
-    value=True
+    value=True,
 )
 
 st.write("Powered by Google ADK + Gemini 2.5 Flash")
@@ -94,11 +97,14 @@ Goal : {goal}
             for part in event.content.parts:
 
                 if getattr(part, "text", None):
-
                     final_response = part.text
 
     return final_response
 
+
+# ------------------------
+# Button
+# ------------------------
 
 if st.button("🚀 Get Recommendation"):
 
@@ -109,19 +115,42 @@ if st.button("🚀 Get Recommendation"):
         "goal": goal,
     }
 
+    # --------------------
+    # DEMO MODE
+    # --------------------
+
     if demo_mode:
 
         st.success("🎭 Demo Mode Enabled")
+
         response = get_demo_response(customer)
+
+        st.markdown(response)
+
+    # --------------------
+    # REAL AI
+    # --------------------
 
     else:
 
         st.info("🤖 Using Google ADK + Gemini")
 
-        with st.spinner("Analyzing Customer..."):
+        try:
 
-            response = asyncio.run(get_response())
+            with st.spinner("Analyzing Customer..."):
 
-        st.success("Recommendation Generated")
+                response = asyncio.run(get_response())
 
-    st.markdown(response)
+            st.success("Recommendation Generated")
+
+            st.markdown(response)
+
+        except Exception as e:
+
+            st.error("Unable to contact Gemini.")
+
+            st.exception(e)
+
+            st.info(
+                "If quota is exhausted, enable Demo Mode."
+            )
