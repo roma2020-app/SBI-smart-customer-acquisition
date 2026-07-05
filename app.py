@@ -145,12 +145,12 @@ if st.button("🚀 Get Recommendation"):
 
             st.markdown(response)
 
-        except Exception as e:
+        except Exception:
 
-            st.error("Unable to contact Gemini.")
+    st.warning("Live AI is currently unavailable.")
 
-            st.exception(e)
+    st.info("Showing Demo Recommendation instead.")
 
-            st.info(
-                "If quota is exhausted, enable Demo Mode."
-            )
+    response = get_demo_response(customer)
+
+    st.markdown(response)
