@@ -36,5 +36,39 @@ This solution enables relationship managers to engage customers more effectively
 | **Deployment**                 | Streamlit Local / Streamlit Cloud      | Application deployment for demonstrations and production prototypes                   |
 | **Version Control**            | Git & GitHub                           | Source code management and collaboration                                              |
 
+Google ADK Components Used
+LlmAgent – Main AI agent for customer interaction.
+Runner – Executes the agent workflow.
+InMemorySessionService – Manages user sessions.
+Python Tools – Performs deterministic customer profiling and product recommendation.
+Gemini 2.5 Flash – Generates the final personalized response.
 
+##AI WorkFlow
+Customer Input
+       │
+       ▼
+Streamlit Web UI
+       │
+       ▼
+Google ADK Runner
+       │
+       ▼
+LlmAgent (Gemini 2.5 Flash)
+       │
+       ├───────────────┐
+       ▼               ▼
+Profile Tool     Recommendation Tool
+(Python)         (Python)
+       │               │
+       └───────┬───────┘
+               ▼
+     Personalized Recommendation
+               ▼
+      AI Sales Pitch & Response
 
+##Development Tools
+Visual Studio Code
+Python Virtual Environment (venv)
+Git & GitHub
+Google AI Studio
+Streamlit
